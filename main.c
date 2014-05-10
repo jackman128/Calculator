@@ -24,11 +24,18 @@ int main() {
 				break;
 			case '/':
 				op2 = pop();
-				if (op2 != 0.0) {
+				if (op2 != 0.0)
 					push(pop() / op2);
+				else
+					printf("Error: cannot divide by zero.\n");
+				break;
+			case '%':
+				op2 = pop();
+				if (op2 != 0.0) {
+					push(fmod(pop(), op2));
 				}
 				else
-					printf("Zero division error.\n");
+					printf("Error: cannot divide by zero.\n");
 				break;
 			case '\n':
 				printf("\t%.8g\n", pop());
