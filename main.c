@@ -2,12 +2,16 @@
 
 #define MAXOP 100
 
+void help(void);
+
 int main() {
 	int type;
 	double op2;
 	char s[MAXOP];
 	double last;
 	int status = 0;
+	
+	help();
 	
 	while ((type = getop(s)) != EOF) {
 		switch (type) {
@@ -28,6 +32,9 @@ int main() {
 				break;
 			case 'P':
 				printf("%g\n", pop());
+				break;
+			case '?':
+				help();
 				break;
 			case NUMBER:
 				push(atof(s));
@@ -76,4 +83,20 @@ int main() {
 	}
 	
 	return 0;
+}
+
+void help(void) {
+	printf("HELP:\n\n");
+	printf("This is a reverse polish calculator. You must use it like so:\n");
+	printf("1 + 1 is written as:\n");
+	printf("1 1 +\n");
+	printf("(1 - 2) * (4 + 5) is written as:\n");
+	printf("1 2 - 4 5 + *\n\n");
+	printf("COMMANDS:\n\n");
+	printf("A\tPrints top of stack.\n");
+	printf("B\tSwaps the top two values.\n");
+	printf("C\tClear the stack.\n");
+	printf("D\tDuplicate the top value.\n");
+	printf("P\tPop the stack.\n");
+	printf("?\tShow this message.\n\n");
 }
