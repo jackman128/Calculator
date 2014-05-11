@@ -8,7 +8,7 @@ int main() {
 	int type;
 	double op2;
 	char s[MAXOP];
-	double last;
+	double $ = 0;
 	int status = 0;
 	
 	help();
@@ -64,6 +64,10 @@ int main() {
 			case '?':
 				help();
 				break;
+			//variables
+			case '$':
+				push($);
+				break;
 			case NUMBER:
 				push(atof(s));
 				break;
@@ -100,7 +104,7 @@ int main() {
 				break;
 			case '\n':
 				if (status) {
-					printf("\t%.8g\n", pop());
+					printf("\t%.8g\n", $ = pop());
 					status = 0;
 				}
 				break;
@@ -133,4 +137,11 @@ void help(void) {
 	printf("T\tTangent\n");
 	printf("^\tPower\n");
 	printf("Q\tSquare root\n\n");
+	printf("VARIABLES:\n\n");
+	printf("$ is a variable for the last printed value.\n");
+	printf("Otherwise, you can assign any lowercase letter to be a variable.\n");
+	printf("To assign a variable, you must use the = operator like so:\n");
+	printf("42 n =\n");
+	printf("That assigns 42 to the variable n.\n");
+	printf("\n");
 }
