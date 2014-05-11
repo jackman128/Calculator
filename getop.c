@@ -16,6 +16,10 @@ int getop(char s[]) {
 	if (c == '.')
 		while (isdigit(s[++i] = c = getch()))
 			;
+	if(c == '-') {
+		if (!isdigit(c = getchar()) && c != '.')
+			return c;
+	}
 	s[i] = '\0';
 	if (c != EOF)
 		ungetch(c);

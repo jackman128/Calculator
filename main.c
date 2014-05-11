@@ -87,7 +87,13 @@ int main() {
 					printf("Invalid variable name.\n");
 				break;
 			case NUMBER:
-				push(atof(s));
+				if (last == '-') {
+					op2 = atof(s);
+					op2 = -op2;
+					push(op2);
+				}
+				else
+					push(atof(s));
 				break;
 			case '+':
 				push(pop() + pop());

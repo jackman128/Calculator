@@ -15,10 +15,8 @@ double push(double f) {
 double pop(void) {
 	if (sp > 0)
 		return val[--sp];
-	else {
-		printf("Error: stack empty\n");
+	else
 		return 0.0;
-	}
 }
 
 //clear the stack
@@ -44,6 +42,6 @@ void swap(void) {
 }
 //dump the stack
 void empty(void) {
-	for (sp = sp; sp >= 0; sp--)
+	while (sp != 0)
 		printf("%g\n", pop());
 }
