@@ -1,7 +1,5 @@
 #include "calc.h"
 
-#define MAXVAL 100
-
 int sp = 0;
 double val[MAXVAL];
 
@@ -27,14 +25,15 @@ double pop(void) {
 void clear(void) {
 	sp = 0;
 }
-
+//return top of stack
 double top(void) {
 	return val[sp - 1];
 }
-
+//duplicate top value
 void duplicate(void) {
 	push(val[sp - 1]);
 }
+//swap top 2 values
 void swap(void) {
 	double swap1;
 	double swap2;
@@ -42,4 +41,9 @@ void swap(void) {
 	swap2 = pop();
 	push(swap1);
 	push(swap2);
+}
+//dump the stack
+void empty(void) {
+	for (sp = sp; sp >= 0; sp--)
+		printf("%g\n", pop());
 }

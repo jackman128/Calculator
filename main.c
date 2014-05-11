@@ -5,13 +5,19 @@
 void help(void);
 
 int main() {
-	int type;
+	int type = 0;
+	int last = 0;
+	int i;
 	double op2;
 	char s[MAXOP];
 	double $ = 0;
+	double variable[25];
 	int status = 0;
 	
 	help();
+	
+	for (i = 0; i < 26; i++)
+		variable[i] = 0;
 	
 	while ((type = getop(s)) != EOF) {
 		switch (type) {
@@ -33,6 +39,9 @@ int main() {
 				break;
 			case 'P':
 				printf("%g\n", pop());
+				break;
+			case 'E':
+				empty();
 				break;
 			//math library operators
 			case 'S':
@@ -67,6 +76,15 @@ int main() {
 			//variables
 			case '$':
 				push($);
+				break;
+			case '=':
+				pop();
+				if (islower(last)) {
+					push(variable[last - 'a'] = pop());
+					printf("%c set to %g.\n", last, variable[last - 'a']);
+				}
+				else
+					printf("Invalid variable name.\n");
 				break;
 			case NUMBER:
 				push(atof(s));
@@ -109,9 +127,13 @@ int main() {
 				}
 				break;
 			default:
-				printf("Error: unkown command.\n");
+				if (type >= 'a' && type <= 'z')
+					push(variable[type - 'a']);
+				else
+					printf("Error: unkown command.\n");
 				break;
 		}
+		last = type;
 	}
 	
 	return 0;
@@ -130,6 +152,7 @@ void help(void) {
 	printf("C\tClear the stack.\n");
 	printf("D\tDuplicate the top value.\n");
 	printf("P\tPop the stack.\n");
+	printf("E\tEmpty the stack into the terminal.\n");
 	printf("?\tShow this message.\n\n");
 	printf("OPERATORS:\n\n");
 	printf("S\tSine\n");
