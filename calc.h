@@ -9,8 +9,6 @@
 double push(double);
 double pop(void);
 int getop(char []);
-int getch(void);
-void ungetch(int);
 void clear(void);
 double top(void);
 void duplicate(void);
