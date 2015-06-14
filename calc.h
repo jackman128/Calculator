@@ -6,7 +6,7 @@
 #define NUMBER '0'
 #define MAXVAL 100
 
-double push(double);
+void push(double);
 double pop(void);
 int getop(char []);
 void clear(void);
