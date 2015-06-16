@@ -164,7 +164,7 @@ void help(void) {
   printf("^\tPower\n");
   printf("Q\tSquare root\n\n");
   printf("VARIABLES:\n\n");
-  printf("Otherwise, you can assign any lowercase letter to be a variable.\n");
+  printf("You can assign any lowercase letter to be a variable.\n");
   printf("To assign a variable, you must use the = operator like so:\n");
   printf("42 n =\n");
   printf("That assigns 42 to the variable n.\n");
